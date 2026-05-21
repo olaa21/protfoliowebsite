@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing — Oyinkan Ifidon-Ola</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/writing.css">
+</head>
+<body>
+ 
+<!-- ── HEADER ── -->
+<header>
+  <div class="nav-left">
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="writing.html" class="nav-btn nav-btn--active">Writing</a>
+  </div>
+  <div class="nav-right">
+    <span class="name-main">oyinkan ifidon-ola</span>
+    <span class="name-pronunciation">o-yi(n)-co(n) ifidon-ola</span>
+  </div>
+</header>
+ 
+<!-- ── MAIN CONTENT ── -->
+<main>
+  <div class="page-title-row">
+    <h1 class="page-title">Writing</h1>
+    <p class="page-subtitle">Essays, observations, and notes on design, space, and culture.</p>
+  </div>
+ 
+  <!-- Filter bar — tags auto-generated from writing.js -->
+  <div class="filter-row" id="filter-row">
+    <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+  </div>
+ 
+  <!-- List — fully built by JS from writing.js -->
+  <div class="writing-list" id="writing-list"></div>
+</main>
+ 
+<!-- ── WRITING MODAL ── -->
+<div class="w-overlay" id="w-overlay" role="dialog" aria-modal="true" aria-labelledby="w-modal-title">
+  <div class="w-modal">
+ 
+    <div class="w-modal-header">
+      <div class="w-modal-header-text">
+        <span class="w-modal-eyebrow" id="w-modal-eyebrow"></span>
+        <h2 class="w-modal-title" id="w-modal-title"></h2>
+        <span class="w-modal-date"  id="w-modal-date"></span>
+      </div>
+      <div class="w-modal-actions">
+        <a class="w-download-btn" id="w-download-btn" href="#" target="_blank" rel="noopener">↓ PDF</a>
+        <button class="w-close-btn" id="w-close-btn" aria-label="Close">✕</button>
+      </div>
+    </div>
+ 
+    <div class="w-modal-body">
+      <!-- PDF viewer -->
+      <iframe class="w-pdf-frame" id="w-pdf-frame" title="PDF viewer" src=""></iframe>
+      <!-- Shown when no PDF is attached yet -->
+      <div class="w-no-pdf" id="w-no-pdf" hidden>
+        <p>No PDF attached yet.</p>
+        <p class="w-no-pdf-hint">
+          Add a PDF to the <code>writing/</code> folder and set the
+          <code>pdf</code> field in <code>js/writing.js</code>.
+        </p>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<script src="js/writing.js"></script>
+<script>
+/* ── ELEMENTS ─────────────────────────────────────────────── */
+const listEl    = document.getElementById('writing-list');
+const filterRow = document.getElementById('filter-row');
+const overlay   = document.getElementById('w-overlay');
+const pdfFrame  = document.getElementById('w-pdf-frame');
+const noPdf     = document.getElementById('w-no-pdf');
+const dlBtn     = document.getElementById('w-download-btn');
+const closeBtn  = document.getElementById('w-close-btn');
+ 
+/* ── BUILD FILTER TAGS ──────────────────────────────────────── */
+const allTags = [...new Set(WRITINGS.flatMap(w => w.tags))].sort();
+allTags.forEach(tag => {
+  const b = document.createElement('button');
+  b.className = 'filter-btn';
+  b.dataset.filter = tag;
+  b.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
+  filterRow.appendChild(b);
+});
+ 
+/* ── BUILD LIST ─────────────────────────────────────────────── */
+WRITINGS.forEach((piece, i) => {
+  const article = document.createElement('article');
+  article.className = 'writing-item';
+  article.dataset.tags = piece.tags.join(' ');
+ 
+  const tagsHTML = piece.tags
+    .map(t => `<span class="writing-tag">${t.charAt(0).toUpperCase() + t.slice(1)}</span>`)
+    .join('');
+ 
+  article.innerHTML = `
+    <div class="writing-meta">
+      <span class="writing-date">${piece.date}</span>
+      <div class="writing-tags">${tagsHTML}</div>
+    </div>
+    <div class="writing-body">
+      <h2 class="writing-title">
+        <button class="open-btn" data-index="${i}">
+          <span class="open-btn-text">${piece.title}</span>
+          <span class="open-btn-icon" aria-hidden="true">↗</span>
+        </button>
+      </h2>
+      <p class="writing-excerpt">${piece.excerpt}</p>
+    </div>
+  `;
+ 
+  listEl.appendChild(article);
+});
+ 
+/* ── OPEN MODAL ─────────────────────────────────────────────── */
+listEl.addEventListener('click', e => {
+  const btn = e.target.closest('.open-btn');
+  if (!btn) return;
+ 
+  const piece = WRITINGS[parseInt(btn.dataset.index, 10)];
+  if (!piece) return;
+ 
+  document.getElementById('w-modal-eyebrow').textContent =
+    piece.tags.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(' · ');
+  document.getElementById('w-modal-title').textContent = piece.title;
+  document.getElementById('w-modal-date').textContent  = piece.date;
+ 
+  if (piece.pdf) {
+    const path      = `writing/${piece.pdf}`;
+    pdfFrame.src    = path;
+    pdfFrame.hidden = false;
+    noPdf.hidden    = true;
+    dlBtn.href      = path;
+    dlBtn.style.display = '';
+  } else {
+    pdfFrame.src    = '';
+    pdfFrame.hidden = true;
+    noPdf.hidden    = false;
+    dlBtn.style.display = 'none';
+  }
+ 
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+ 
+/* ── CLOSE MODAL ────────────────────────────────────────────── */
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { pdfFrame.src = ''; }, 300);
+}
+closeBtn.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+ 
+/* ── FILTER ─────────────────────────────────────────────────── */
+filterRow.addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('filter-btn--active'));
+  btn.classList.add('filter-btn--active');
+  const f = btn.dataset.filter;
+  document.querySelectorAll('.writing-item').forEach(item => {
+    item.style.display =
+      f === 'all' || item.dataset.tags.includes(f) ? '' : 'none';
+  });
+});
+</script>
+ 
+</body>
+</html>

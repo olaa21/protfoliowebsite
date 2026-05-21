@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oyinkan Ifidon-Ola</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-left">
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="writing.html" class="nav-btn">Writing</a>
+  </div>
+  <div class="nav-right">
+    <span class="name-main">oyinkan ifidon-ola</span>
+    <span class="name-pronunciation">o-yi(n)-co(n) ifidon-ola</span>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- LEFT / TOP on mobile: MAP -->
+  <div class="map-side" id="map-side">
+    <svg id="map-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <div class="scale-bar">
+      <div class="scale-line"></div>
+      <div>200 m</div>
+    </div>
+
+    <button class="legend-toggle" id="legend-toggle" aria-expanded="false">
+      <span class="legend-toggle-icon">+</span>
+      Key
+    </button>
+    <div class="legend-box" id="legend-box">
+      <div class="legend-title">Connection Types</div>
+    </div>
+  </div>
+
+  <!-- RIGHT / BOTTOM on mobile: BIO -->
+  <div class="bio-side">
+    <div class="ruled-lines" id="ruled-lines"></div>
+
+    <div class="bio-text">
+      <p>
+        <span class="hl hl-blue">Oyinkan Ifidon-Ola</span> is a researcher &amp; designer whose work is
+        positioned at the intersection of
+        <span class="hl hl-yellow">indigenous design</span> and
+        <span class="hl hl-orange">civic imagination.</span>
+      </p>
+      <p>
+        Her dual degree in Information Science and Design from the University of Michigan trained her
+        to see patterns in data, and meaning in form. She has centered her practice on
+        <span class="hl hl-pink">community engagement</span> and
+        <span class="hl hl-green">urban &amp; architectural research.</span> 
+      </p>
+      <p>
+       Grounded in design as praxis and co-citizenship, her approach treats making as a form of
+        critical engagement—where theory and action continuously inform one another. She is currently
+        exploring how carcerality functions to restrict the agency, and spatial rights of marginalized populations.
+      </p>
+    </div>
+
+    <!-- CV accordion — sits directly below bio text -->
+    <div class="cv-accordion">
+      <button class="cv-acc-toggle" id="cv-toggle" aria-expanded="false">
+        <span class="cv-acc-label">CV</span>
+        <span class="cv-acc-icon">+</span>
+      </button>
+
+      <div class="cv-acc-body" id="cv-panel">
+        <div class="cv-acc-inner">
+
+          <!-- Contact + download -->
+          <div class="cv-acc-header">
+            <p class="cv-acc-contact">
+              olaa@umich.edu &nbsp;·&nbsp;
+              <a href="https://linkedin.com/in/ifidon-ola" target="_blank" rel="noopener">linkedin</a> &nbsp;·&nbsp;
+              <a href="https://olaa21.github.io/website/" target="_blank" rel="noopener">portfolio</a>
+            </p>
+            <a class="cv-download" href="cv/oyinkan-ifidon-ola-cv.pdf" target="_blank" rel="noopener">↓ PDF</a>
+          </div>
+
+          <!-- EDUCATION -->
+          <div class="cv-block">
+            <h3 class="cv-block-title">Education</h3>
+            <div class="cv-row">
+              <div class="cv-row-meta">
+                <span class="cv-row-date">2023 – 2026</span>
+                <span class="cv-row-place">University of Michigan</span>
+              </div>
+              <div class="cv-row-body">
+                <p class="cv-row-title">B.S. Information Science &amp; B.A. Art and Design</p>
+                <p class="cv-row-detail">GPA 3.89 · Penny W. Stamps Dean's List · Sophomore Review with Honors · The Thompson Prize</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXPERIENCE -->
+          <div class="cv-block">
+            <h3 class="cv-block-title">Experience</h3>
+
+            <div class="cv-row">
+              <div class="cv-row-meta">
+                <span class="cv-row-date">Sep 2025 – Apr 2026</span>
+                <span class="cv-row-place">University of Michigan Taubman College of Architecture</span>
+              </div>
+              <div class="cv-row-body">
+                <p class="cv-row-title">Research Assistant</p>
+                <p class="cv-row-detail">Supported 5+ interdisciplinary research initiatives; produced 10+ research briefs and stakeholder summaries; standardized documentation across teams.</p>
+              </div>
+            </div>
+
+            <div class="cv-row">
+              <div class="cv-row-meta">
+                <span class="cv-row-date">Oct 2025</span>
+                <span class="cv-row-place">UNESCO Heritage Project</span>
+              </div>
+              <div class="cv-row-body">
+                <p class="cv-row-title">Research Assistant</p>
+                <p class="cv-row-detail">Technical and historical analysis of Iranian sustainable water infrastructure; synthesized findings into an institutional proposal for global partners.</p>
+              </div>
+            </div>
+
+            <div class="cv-row">
+              <div class="cv-row-meta">
+                <span class="cv-row-date">Jun – Aug 2025</span>
+                <span class="cv-row-place">Senseable City Lab, Massachusetts Institute of Technology</span>
+              </div>
+              <div class="cv-row-body">
+                <p class="cv-row-title">Urban Data Research Intern</p>
+                <p class="cv-row-detail">Analyzed geospatial datasets with Python and ML — improved classification accuracy to 98%. Automated LiDAR pipeline reducing processing from weeks to hours. Built interactive HTML visualizations for public stakeholders.</p>
+              </div>
+            </div>
+
+            <div class="cv-row">
+              <div class="cv-row-meta">
+                <span class="cv-row-date">May – Jul 2024</span>
+                <span class="cv-row-place">University of Michigan Stamps Alumni Relations</span>
+              </div>
+              <div class="cv-row-body">
+                <p class="cv-row-title">Research &amp; Data Analyst Intern</p>
+                <p class="cv-row-detail">Analyzed 1,000+ alumni and donor records; conducted 10–20 stakeholder interviews; developed executive reports on engagement, KPIs, and financial trends.</p>
+              </div>
+            </div>
+
+            <div class="cv-row">
+              <div class="cv-row-meta">
+                <span class="cv-row-date">Mar – Jun 2024</span>
+                <span class="cv-row-place">Curl Connect</span>
+              </div>
+              <div class="cv-row-body">
+                <p class="cv-row-title">UX Researcher</p>
+                <p class="cv-row-detail">Mixed-method research (n=25+); developed personas, journey maps, and insight reports; usability improvements across 3+ core features.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SKILLS -->
+          <div class="cv-block cv-block--last">
+            <h3 class="cv-block-title">Skills</h3>
+            <div class="cv-skills-grid">
+              <div>
+                <p class="cv-skills-label">Spatial &amp; Data</p>
+                <p class="cv-skills-list">QGIS · LiDAR (Cloud Compare) · Folium · Python · SQL · Tableau</p>
+              </div>
+              <div>
+                <p class="cv-skills-label">Research</p>
+                <p class="cv-skills-list">Qualitative interviews · Journey mapping · Archival research · Data sonification (Max/MSP)</p>
+              </div>
+              <div>
+                <p class="cv-skills-label">Design &amp; Fabrication</p>
+                <p class="cv-skills-list">Figma · Adobe Suite · 3D printing · Laser cutting · Prototyping</p>
+              </div>
+              <div>
+                <p class="cv-skills-label">Digital</p>
+                <p class="cv-skills-list">HTML/CSS/JS · Jupyter · Git · Web accessibility (WCAG)</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /cv-acc-inner -->
+      </div><!-- /cv-acc-body -->
+    </div><!-- /cv-accordion -->
+
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-pin-row">
+          <div class="modal-pin-dot" id="modal-pin-dot"></div>
+          <span class="modal-eyebrow" id="modal-eyebrow"></span>
+        </div>
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-date"  id="modal-date"></div>
+      </div>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+    <div class="modal-tabs">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="process">Process</button>
+      <button class="tab-btn" data-tab="visuals">Visuals</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- JS: data must load first, then map, then modal -->
+<script src="js/data.js"></script>
+<script src="js/map.js"></script>
+<script src="js/modal.js"></script>
+
+</body>
+</html>
