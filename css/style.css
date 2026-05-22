@@ -249,7 +249,7 @@ header {
 .cv-accordion {
   position: relative;
   z-index: 1;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 /* Toggle button — boxed, full width */
@@ -490,16 +490,15 @@ header {
 }
 
 .bio-text {
-  font-size: 22px;
-  line-height: 1.75;
+  font-size: 17px;
+  line-height: 1.55;
   font-weight: 500;
   color: var(--ink);
   position: relative;
   z-index: 1;
-  /* Prevent first line clipping under fixed header on GitHub Pages */
-  padding-top: 8px;
 }
-.bio-text p { margin-bottom: 1.4em; }
+
+.bio-text p { margin-bottom: 0.9em; }
 .bio-text p:last-child { margin-bottom: 0; }
 
 /* Highlighted spans — each color matches its project pin */
@@ -845,14 +844,13 @@ table.rt td {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* Increase top padding to safely clear the fixed header */
-  padding: 64px 52px 48px;
+  padding: 72px 52px 40px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
   min-height: 0;
   height: 100%;
-  }
+}
   .bio-text {
   font-size: 20px;        /* down from 22px */
   line-height: 1.6;       /* down from 1.75 */
