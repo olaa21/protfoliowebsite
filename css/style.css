@@ -249,7 +249,7 @@ header {
 .cv-accordion {
   position: relative;
   z-index: 1;
-  margin-top: 32px;
+  margin-top: 20px;
 }
 
 /* Toggle button — boxed, full width */
@@ -462,7 +462,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 48px 52px;
+  padding: 40px 52px 36px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
@@ -490,14 +490,14 @@ header {
 }
 
 .bio-text {
-  font-family: 'EB Garamond', serif;
-  /* Explicit px — avoids Safari vw calculation bugs */
   font-size: 22px;
   line-height: 1.75;
   font-weight: 500;
   color: var(--ink);
   position: relative;
   z-index: 1;
+  /* Prevent first line clipping under fixed header on GitHub Pages */
+  padding-top: 8px;
 }
 .bio-text p { margin-bottom: 1.4em; }
 .bio-text p:last-child { margin-bottom: 0; }
@@ -842,14 +842,29 @@ table.rt td {
 
   /* Bio: natural scrolling below the map */
   .bio-side {
-    width: 100%;
-    height: auto;
-    min-height: 100vh;
-    padding: 48px 24px 72px;
-    justify-content: flex-start;
-    overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Increase top padding to safely clear the fixed header */
+  padding: 64px 52px 48px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  min-height: 0;
+  height: 100%;
   }
-  .bio-text { font-size: 20px; }
+  .bio-text {
+  font-size: 20px;        /* down from 22px */
+  line-height: 1.6;       /* down from 1.75 */
+  font-weight: 500;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+  padding-top: 8px;
+}
+
+.bio-text p { margin-bottom: 1em; }   /* down from 1.4em */
+.bio-text p:last-child { margin-bottom: 0; }
   .rule-line { left: 24px; right: 20px; }
 
   /* Legend/scale stay inside map-side which is in-flow */
