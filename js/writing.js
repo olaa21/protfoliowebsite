@@ -26,7 +26,7 @@ const WRITINGS = [
     title:   "Inhabiting Contradiction",
     date:    "April 2026",
     tags:    ["culture", "identity", "home"],
-    excerpt: "A one or two sentence description of what this piece is about.",
+    excerpt: "Exploring how empire creates an ongoing contradiction in which both East and West depend on unstable narratives to define themselves.",
     pdf:     "Inhabiting-Contradiction.pdf"
   },
 
