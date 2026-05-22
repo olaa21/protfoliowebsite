@@ -461,17 +461,24 @@ header {
 .bio-side {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 40px 52px 36px;
+  justify-content: flex-start;
+  padding: 0 52px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
   min-height: 0;
   height: 100%;
 }
+
+.bio-content {
+  margin: auto 0;                /* this does the centering reliably */
+  padding: 72px 0 40px;         /* top clears the header, bottom gives breathing room */
+  width: 100%;
+}
+
 /* When CV accordion is open, top-align so user can scroll through */
 .bio-side:has(.cv-acc-body.open) {
-  justify-content: flex-start;
+  margin: 0;
   padding-top: 52px;
 }
 
